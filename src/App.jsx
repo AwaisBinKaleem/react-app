@@ -8,8 +8,8 @@ function App() {
 
   return (
     <>
-      <h1>App.jsx</h1>
-      <div>
+      <h2>App.jsx</h2>
+      <div className='flex justify-center'>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
