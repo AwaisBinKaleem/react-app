@@ -8,16 +8,14 @@ export const router = createBrowserRouter([
     errorElement: <ErrorRouterPage />,
     children: [
       {
-        path: "contacts",
+        path: "/contacts",
         element: <div>all contact</div>,
-        children: [
-          {
-            path: "contacts/:contactId",
-            element: <div>contact id n</div>,
-          },
-        ],
       },
-
+      {
+        path: "/contacts/:contactId",
+        element: <div>contact id n</div>,
+      },
+      
     ],
   },
 ]);
