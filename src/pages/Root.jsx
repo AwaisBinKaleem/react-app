@@ -9,9 +9,11 @@ import LandingPage from "./LandingPage";
 
 function Root() {
   const location = useLocation()
-  const [displayHeadr,setDisplayHeadr] = useState(location.pathname === '/' ? false : true)
-  const [displayNavbar,setDisplayNavbar] = useState(location.pathname === '/' ? false : true)
-  const [navbarState,setNavbarState] = useState("OPEN")
+  // const [displayHeadr,setDisplayHeadr] = useState(location.pathname === '/' ? false : true)
+  // const [displayNavbar,setDisplayNavbar] = useState(location.pathname === '/' ? false : true)
+  const [displayHeadr,setDisplayHeadr] = useState(true)
+  const [displayNavbar,setDisplayNavbar] = useState(true)
+  const [navbarState,setNavbarState] = useState("CLOSE")
   return (
     <>
       <main className="page-content">
@@ -28,14 +30,16 @@ function Root() {
       }}
       >
         {
-          location.pathname === '/' && <LandingPage/>
+          // location.pathname === '/' && <LandingPage/>
+          <LandingPage/>
         }
         
         <Outlet />
       </div>
         {/* footer */}
         {
-          displayNavbar && <LeftSideBar state={navbarState} setState={setNavbarState}/>
+          // displayNavbar && <LeftSideBar state={navbarState} setState={setNavbarState}/>
+          <LeftSideBar state={navbarState} setState={setNavbarState}/>
         }
       </main>
     </>

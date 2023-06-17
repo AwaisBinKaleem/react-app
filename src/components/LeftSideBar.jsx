@@ -19,8 +19,11 @@ const LeftSideBar = (props) => {
     )}>
       <div className={classNames(
         "leftSidebarHeader",
-        `h-[${headerHeight}]`
-      )}>
+      )}
+      style={{
+        height:headerHeight
+      }}
+      >
       <MenuFoldOutlined className="closeNavbarIcon" onClick={closeSidebar}/>
       </div>
       <p>Left SideBar</p>
