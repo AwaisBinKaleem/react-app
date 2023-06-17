@@ -2,6 +2,8 @@ import { createBrowserRouter } from "react-router-dom";
 import ErrorRouterPage from "./pages/ErrorRouterPage";
 import Root from "./pages/Root";
 import About from "./pages/About";
+
+// Todo:private routes
 export const router = createBrowserRouter([
   {
     path: "/",
