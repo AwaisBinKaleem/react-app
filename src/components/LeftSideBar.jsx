@@ -1,8 +1,31 @@
+import { useState } from "react";
+import classNames from "classnames";
 import "../styles/leftSideBar.css";
-const LeftSideBar = () => {
+import {MenuFoldOutlined} from '@ant-design/icons';
+import { headerHeight } from "../constants/themeConsts";
+import { Link } from "react-router-dom";
+
+const LeftSideBar = (props) => {
+  const {state,setState} = props;
+
+  const closeSidebar = () => {
+    setState("CLOSE")
+  }
+
   return (
-    <div className="LeftSideBar">
+    <div className={classNames(
+      "LeftSideBar",
+      state === "CLOSE" ? "leftSidebarClosed" : ""
+    )}>
+      <div className={classNames(
+        "leftSidebarHeader",
+        `h-[${headerHeight}]`
+      )}>
+      <MenuFoldOutlined className="closeNavbarIcon" onClick={closeSidebar}/>
+      </div>
       <p>Left SideBar</p>
+      <Link to="/contacts">Contacts</Link><br/>
+      <Link to="/contacts/1">Contacts/1</Link>
     </div>
   )
 }
