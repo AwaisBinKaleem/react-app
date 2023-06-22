@@ -1,4 +1,4 @@
-//LAYOUT-COMPONENT-Or-LANDING-PAGE
+//ROOT-LAYOUT-COMPONENT-Or-LANDING-PAGE
 import { Outlet, useLocation } from "react-router-dom";
 import Header from "../components/Header";
 import LeftSideBar from "../components/LeftSideBar";
