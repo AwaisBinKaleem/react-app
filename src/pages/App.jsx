@@ -6,6 +6,7 @@ import classNames from "classnames";
 import { headerHeight } from "../constants/themeConsts";
 import { useState } from "react";
 import LandingPage from "./LandingPage";
+import { useClickAway } from "@uidotdev/usehooks";
 
 function App() {
   const location = useLocation();
@@ -14,6 +15,11 @@ function App() {
   const [displayHeadr, setDisplayHeadr] = useState(true);
   const [displayNavbar, setDisplayNavbar] = useState(true);
   const [navbarState, setNavbarState] = useState("CLOSE");
+
+  const ref = useClickAway(() => {
+    setNavbarState("CLOSE");
+  });
+
   return (
     <>
       <main className="page-content">
@@ -31,15 +37,20 @@ function App() {
 
           <Outlet />
         </div>
-        {/* footer */}
-        {displayHeadr && (
-          <Header navbarState={navbarState} setNavbarState={setNavbarState} />
-        )}
-        {
-          // displayNavbar && <LeftSideBar state={navbarState} setState={setNavbarState}/>
-          // <LeftSideBar state={navbarState} setState={setNavbarState} />
-        }
       </main>
+      {displayHeadr && (
+        <Header navbarState={navbarState} setNavbarState={setNavbarState} />
+      )}
+      {/* footer */}
+      {
+        displayNavbar && (
+          <LeftSideBar
+            ref={ref}
+            state={navbarState}
+            setState={setNavbarState}
+          />
+        )
+      }
     </>
   );
 }
