@@ -34,8 +34,9 @@ function App() {
             location.pathname === "/" && <LandingPage />
             // <LandingPage/>
           }
-
-          <Outlet />
+          <section className="content container mx-auto">
+            <Outlet />
+          </section>
         </div>
       </main>
       {displayHeadr && (
