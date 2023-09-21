@@ -7,8 +7,10 @@ import { headerHeight } from "../constants/themeConsts";
 import { useState } from "react";
 import LandingPage from "./LandingPage";
 import { useClickAway } from "@uidotdev/usehooks";
+import useSocketIo from "../hooks/useSocketIo";
 
 function App() {
+  // useSocketIo()
   const location = useLocation();
   // const [displayHeadr,setDisplayHeadr] = useState(location.pathname === '/' ? false : true)
   // const [displayNavbar,setDisplayNavbar] = useState(location.pathname === '/' ? false : true)
