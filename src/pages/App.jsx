@@ -10,7 +10,7 @@ import { useClickAway } from "@uidotdev/usehooks";
 import useSocketIo from "../hooks/useSocketIo";
 
 function App() {
-  // useSocketIo()
+  useSocketIo()
   const location = useLocation();
   // const [displayHeadr,setDisplayHeadr] = useState(location.pathname === '/' ? false : true)
   // const [displayNavbar,setDisplayNavbar] = useState(location.pathname === '/' ? false : true)

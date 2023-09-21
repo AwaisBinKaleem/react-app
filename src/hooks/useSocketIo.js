@@ -1,30 +1,27 @@
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect, useState } from "react";
 import { io } from "socket.io-client";
 const config = {
-  host: "ws://localhost",
+  host: "http://localhost",
   port: "5000",
   options: {
-    path: "/socket/socket.io",
+    path: "/socket/",
     // transports : ["websocket", "polling"],
     // extraHeaders: {
     //     "Access-Control-Allow-Originr": "*"
     //   }
   },
 };
-const flatURL = `${config.host}/${config.port}`;
+const flatURL = `${config.host}:${config.port}`;
+const socket = io(flatURL, config.options);
 
 const useSocketIo = () => {
-  const socket = useMemo(() => {
-    return io(flatURL, config.options);
-  }, []);
-
   useEffect(() => {
     socket.on("connect", () => {
-      console.log(socket.id);
+      console.log(`connected to socket with id: ${socket.id}`);
     });
 
     socket.on("disconnect", (reason) => {
-      console.log(socket.id);
+      console.log(`disconnected to socket: {status:"${reason}"} `);
     });
 
     // socket.on("connect_error", () => {
@@ -34,9 +31,7 @@ const useSocketIo = () => {
 
   }, []);
 
-  return {
-    socket
-  };
+  return socket
 }
 
 export default useSocketIo;
