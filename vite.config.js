@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   build: {
     minify: true,
-    optimize: true,
+    // optimize: true,
     sourcemap: false,
   },
 })

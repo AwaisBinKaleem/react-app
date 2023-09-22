@@ -6,7 +6,7 @@ import { headerHeight } from "../constants/themeConsts";
 import { Link } from "react-router-dom";
 
 const LeftSideBar = (props) => {
-  const {ref, state,setState} = props;
+  const {refrance, state,setState} = props;
 
   const closeSidebar = () => {
     setState("CLOSE")
@@ -17,7 +17,7 @@ const LeftSideBar = (props) => {
       "LeftSideBar",
       state === "CLOSE" ? "leftSidebarClosed" : ""
     )}
-    ref={ref}
+    ref={refrance}
     >
       <div className={classNames(
         "leftSidebarHeader",

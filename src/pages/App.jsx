@@ -48,7 +48,7 @@ function App() {
       {
         displayNavbar && (
           <LeftSideBar
-            ref={ref}
+            refrance={ref}
             state={navbarState}
             setState={setNavbarState}
           />
