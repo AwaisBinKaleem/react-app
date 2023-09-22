@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { io } from "socket.io-client";
 const config = {
   host: "http://localhost",
@@ -12,26 +12,31 @@ const config = {
   },
 };
 const flatURL = `${config.host}:${config.port}`;
-const socket = io(flatURL, config.options);
+// const socket = io(flatURL, config.options);
 
 const useSocketIo = () => {
+  const socket = useRef(null);
   useEffect(() => {
-    socket.on("connect", () => {
-      console.log(`connected to socket with id: ${socket.id}`);
+    socket.current = io(flatURL, config.options);
+    socket.current.on("connect", () => {
+      console.log(`connected to socket with id: ${socket.current.id}`);
     });
 
-    socket.on("disconnect", (reason) => {
+    socket.current.on("disconnect", (reason) => {
       console.log(`disconnected to socket: {status:"${reason}"} `);
     });
 
-    // socket.on("connect_error", () => {
+    // socket.current.on("connect_error", () => {
     //     // any config;
-    //     socket.connect();
+    //     socket.current.connect();
     //   })
 
+    return () => {
+      socket.current.disconnect();
+    }
   }, []);
 
-  return socket
+  return socket.current
 }
 
 export default useSocketIo;
